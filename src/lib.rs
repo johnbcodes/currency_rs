@@ -40,7 +40,7 @@ mod currency_impl;
 mod currency_opts;
 mod currency_regex;
 #[cfg(feature = "diesel2")]
-mod diesel2;
+pub mod diesel2;
 
 pub use currency::Currency;
 pub use currency_err::CurrencyErr;
