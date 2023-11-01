@@ -3,7 +3,18 @@ use crate::{
     replace_any_non_numeric_values, CurrencyErr, CurrencyOpts,
 };
 
-#[derive(Debug, Clone)]
+// Diesel configuration
+#[cfg(feature = "diesel2")]
+use diesel::deserialize::FromSqlRow;
+#[cfg(feature = "diesel2")]
+use diesel::expression::AsExpression;
+
+#[derive(Debug, Clone, PartialEq)]
+#[cfg_attr(
+    feature = "diesel2",
+    derive(FromSqlRow, AsExpression),
+    diesel(sql_type = crate::diesel2::sqlite::sql_types::Currency)
+ )]
 pub struct Currency {
     pub(crate) value: f64,
     pub(crate) int_value: f64,

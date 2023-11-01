@@ -16,11 +16,14 @@ keywords = ["currency", "money", "utilities", "precision", "decimal"]
 [dependencies]
 fancy-regex = "0.11.0"
 lazy_static = "1.4.0"
+diesel2 = { default-features = false, optional = true, package = "diesel", version = "2.1" }
 
 [dev-dependencies]
 criterion = "0.4.0"
 rand = { version = "0.8.5", features = ["serde"] }
 
+[features]
+db-diesel2-sqlite = ["diesel2/sqlite"]
 
 [[bench]]
 name = "currency"

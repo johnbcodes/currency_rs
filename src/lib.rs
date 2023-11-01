@@ -39,11 +39,16 @@ mod currency_err;
 mod currency_impl;
 mod currency_opts;
 mod currency_regex;
+#[cfg(feature = "diesel2")]
+mod diesel2;
 
 pub use currency::Currency;
 pub use currency_err::CurrencyErr;
 pub use currency_opts::CurrencyOpts;
 pub(crate) use currency_regex::*;
+
+#[cfg(feature = "diesel2")]
+extern crate diesel2 as diesel;
 
 #[cfg(test)]
 mod currency_test;
